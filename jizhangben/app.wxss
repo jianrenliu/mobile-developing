@@ -1,0 +1,13 @@
+/**app.wxss**/
+.container {
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  box-sizing: border-box;
+} 
+
+/* 主题样式 */
+page{
+  --themeColor: #6789C8;
+  font-size: 28rpx;
+}

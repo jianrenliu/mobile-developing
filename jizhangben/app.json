@@ -1,0 +1,47 @@
+{
+  "pages": [
+    "pages/bill/bill",
+    "pages/index/index",
+    "pages/user/user",
+    "pages/catalog/catalog",
+    "pages/history/history",
+    "pages/add/add",
+    "pages/chart/chart"
+    
+  ],
+  "window": {
+    "backgroundTextStyle": "dark",
+    "enablePullDownRefresh": true,
+    "navigationBarBackgroundColor": "#6789C8",
+    "navigationBarTitleText": "水滴记账",
+    "navigationBarTextStyle": "white"
+  },
+  "tabBar": {
+    "backgroundColor": "FCFCFC",
+    "color": "#6789C8",
+    "selectedColor": "#FFCF75",
+    "list": [
+      {
+        "pagePath": "pages/bill/bill",
+        "text": "账单",
+        "iconPath": "images/bill.png",
+        "selectedIconPath": "images/bill-s.png"
+      },
+      {
+        "pagePath": "pages/chart/chart",
+        "text": "图表",
+        "iconPath": "images/chart.png",
+        "selectedIconPath": "images/chart-s.png"
+      },
+      {
+        "pagePath": "pages/user/user",
+        "text": "我的",
+        "iconPath": "images/user.png",
+        "selectedIconPath": "images/user-s.png"
+      }
+    ]
+  },
+  "style": "v2",
+  "sitemapLocation": "sitemap.json",
+  "debug": true
+}

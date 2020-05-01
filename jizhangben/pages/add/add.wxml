@@ -1,0 +1,107 @@
+<!-- 记一笔 -->
+<view class='container'>
+  <view class='menu'>
+    <view class='top-menu'>
+      <text bindtap='outClick' class='top-menu-out {{current == 0 ? "bgw" : ""}}'>支出</text>
+      <icon class='line'></icon>
+      <text bindtap='inClick' class='top-menu-in {{current == 1 ? "bgw" : ""}}'>收入</text>
+    </view>
+  </view>
+  <swiper class='swiper' current='{{current}}' bindchange='changeCurrent'>
+        <view class="select-consumption-patterns ui-pt20">
+    <view class="consumption-patterns-item" wx:for="{{consumpPatternsList}}">
+      <view class=" ui-flex-ver ui-flex-center ui-p10" data-index="{{index}}" bindtap="onConsumptionItemClick">
+        <image class="consumption-patterns-item-icon" src="{{item.isSelect ? item.iconSel : item.icon}}"></image>
+        <text>{{item.name}}</text>
+      </view>
+    </view>
+  </view>
+
+    <swiper-item class='swiper-item'>
+      <view class='bot'>
+        <view class="pay-money">
+          <text class="ui-ml20">日期</text>
+          <picker class="date-text" mode="date" value="{{date}}" end="{{todayDate}}" bindchange="onDateChange">
+        <view>{{date}}
+      </view>
+    </picker>
+  </view>
+        
+        <view class="pay-money" catchtap="showCaculator">
+    <text class="ui-ml20">花费</text>
+    <view class="money-text">{{spendMoney}}</view>
+  </view>
+        <view class="pay-money">
+
+    <input class="ui-ml20 ui-flex-1" bindinput="onInputRemarks" value = "{{remarksText}}" type="text" placeholder="备注：{{selectName}}" />
+  </view>
+        <view>
+          <button class='save-btn' bindtap='confirmData'>保存</button>
+        </view>
+      </view>
+
+      <block wx:if = "{{isShowCaculator}}">
+  <view class="calculator" >
+    <view class="calculator-number">
+      <view class="calculator-number-item">
+        <view hover hover-class="number-hover" class="number" data-num = "1" catchtap="touchNum">1</view>
+        <view hover hover-class="number-hover" class="number" data-num = "2"  catchtap="touchNum">2</view>
+        <view hover hover-class="number-hover" class="number" data-num = "3"  catchtap="touchNum">3</view>
+      </view>
+       <view class="calculator-number-item">
+      <view hover hover-class="number-hover" class="number" data-num = "4"  catchtap="touchNum">4</view>
+      <view hover hover-class="number-hover" class="number" data-num = "5"  catchtap="touchNum">5</view>
+      <view hover hover-class="number-hover" class="number" data-num = "6"  catchtap="touchNum">6</view>
+       </view>
+       <view class="calculator-number-item">
+      <view hover hover-class="number-hover" class="number" data-num = "7"  catchtap="touchNum">7</view>
+      <view hover hover-class="number-hover" class="number" data-num = "8"  catchtap="touchNum">8</view>
+      <view hover hover-class="number-hover" class="number" data-num = "9"  catchtap="touchNum">9</view>
+       </view>
+       <view class="calculator-number-item">
+      <view hover hover-class="number-hover" class="number" data-num = "."  catchtap="touchNum">.</view>
+      <view hover hover-class="number-hover" class="number" data-num = "0"  catchtap="touchNum">0</view>
+      <view hover hover-class="number-hover" class="number" catchtap="touchClear">←</view>
+      </view>
+    </view>
+
+  </view>
+  </block>
+
+    </swiper-item>
+
+    <!-- 收入 -->
+    <swiper-item class='swiper-item'>
+      <view class='item-wrapper'>
+        <view class='item' wx:for="{{categories_in}}" wx:key="{{index}}">
+          <image class='{{data_in.iconSelected === index ? "red": "blue"}}' bindtap='iconClick' data-id='{{index}}' src='{{item.icon }}'></image>
+          <text>{{item.text}}</text>
+        </view>
+      </view>
+      <view class='bot'>
+        <view class='botinput line'>
+          <label class='date-label'>日期：</label>
+          <picker mode="date" fields="day" value="{{data_in.date}}" start="1996-09-01" end="3050-09-01" bindchange="bindDateChange">
+            <view>
+              <text class="picker-text">
+            {{data_in.date}}
+          </text>
+            </view>
+          </picker>
+        </view>
+        <view class='botinput line'>
+          <label>备注：</label>
+          <input placeholder='点我写备注' type='text' value='{{data_in.notes}}' bindinput='watchNotes'></input>
+        </view>
+        <view class='botinput line'>
+          <label>收入费用：</label>
+          <input placeholder='点我写支出费用' type='text' value='{{data_in.money}}' bindinput='watchMoney'></input>
+        </view>
+      
+        <view>
+          <button class='save-btn' bindtap='handleSave'>保存</button>
+        </view>
+      </view>
+    </swiper-item>
+  </swiper>
+</view>

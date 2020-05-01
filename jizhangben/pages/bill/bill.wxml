@@ -1,0 +1,51 @@
+<!-- 账单 -->
+<view class='container'>
+    <!-- 头部 -->
+    <view class='head'>
+        <picker mode="date" fields="month" value="{{date}}" start="1996-09-01" end="3050-09-01"
+                bindchange="bindDateChange">
+            <!--<view class='head-item'>
+                <text>{{date.year}}年</text>
+                <text class='arrow'>{{date.month}}月</text>
+            </view>-->
+        </picker>
+        <!--<view class='head-item'>
+            <text>收入</text>
+            <text>{{money.getMoney}}</text>
+        </view> -->
+        <view class='head-item'>
+            <text>今日消费</text>
+            <text class="text-today-expend-num">￥{{todayExpend}}</text>
+        </view>
+        <view class='head-item'>
+            <text class='all'>总支出</text>
+            <text class="text-year-expend-num">￥{{yearExpend}}</text>
+        </view>
+        <!--<view class='head-item'>
+            <text>余额(当月)</text>
+            <text>{{money.restMoney}}</text>
+        </view> -->
+    </view>
+    <!-- 主体 -->
+    <scroll-view scroll-y class='scroll-view'>
+        <view class='main'>
+            <view class="content-view">
+
+  
+  <view wx:for="{{todayRecord}}" catchlongtap="onTodayBillItemClick" catchlongtap="ononTodayBillLongItemClick" data-index="{{index}}">
+    <view class="line"></view>
+    <view class="ui-flex ui-p20">
+      <image class="spend-way-icon" src="{{item.spendWayImg}}"></image>
+      <text class="item-remarks">{{item.spendWay}}</text>
+      <text class="item-remarks">{{item.remarks}}</text>
+      <text>￥{{item.spendMoney}}</text>
+    </view>
+  </view>
+</view>
+            <bill-list data="{{ list }}" bindrefresh="refresh"></bill-list>
+        </view>
+    </scroll-view>
+    <!--  添加账单按钮-->
+    <navigator class="addBtn" bindtap="recordExpend">➕</navigator>
+    <navigator class="hisBtn" bindtap="historyExpend">💰</navigator>
+</view>
